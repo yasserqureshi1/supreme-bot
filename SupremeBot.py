@@ -24,7 +24,7 @@ options.add_experimental_option("mobileEmulation", mobile_emulation)
 options.add_experimental_option('prefs', prefs)
 options.add_experimental_option("useAutomationExtension", False)
 
-driver = webdriver.Chrome(options=options, executable_path='/Users/yasserqureshi/Desktop/PROGRAMMING/chromedriver 85')
+driver = webdriver.Chrome(options=options, executable_path='C:/Users/yasse/Desktop/Programming/ChromeDrivers/chromedriver87')
 wait = WebDriverWait(driver, 10)
 session = requests.Session()
 
@@ -38,8 +38,8 @@ def findItemID(name):
 
     url = 'https://www.supremenewyork.com/mobile/products.json'
 
-    html = session.get(url=url, headers=headers).text
-    output = json.loads(html)
+    html = session.get(url=url, headers=headers, timeout=10)
+    output = json.loads(html.text)
 
     for category in output['products_and_categories']:
         for item in output['products_and_categories'][category]:
@@ -56,8 +56,8 @@ def findItem(product_id, colour, size):
 
     url = 'https://www.supremenewyork.com/shop/' + str(product_id) + '.json'
 
-    html = session.get(url=url, headers=headers).text
-    output = json.loads(html)
+    html = session.get(url=url, headers=headers, timeout=10)
+    output = json.loads(html.text)
 
     for product_colours in output['styles']:
         if colour in product_colours['name']:
