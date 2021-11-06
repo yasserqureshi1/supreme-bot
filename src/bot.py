@@ -7,7 +7,7 @@ from selenium import webdriver
 import requests
 import json
 import time
-from config import ProductDetails, UserDetails, PaymentDetails
+from config import ProductDetails, UserDetails, PaymentDetails, Options
 
 headers = {'user-agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, '
                          'like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1'}
@@ -24,7 +24,7 @@ options.add_experimental_option("mobileEmulation", mobile_emulation)
 options.add_experimental_option('prefs', prefs)
 options.add_experimental_option("useAutomationExtension", False)
 
-driver = webdriver.Chrome(options=options, executable_path='C:/Users/yasse/Desktop/Programming/ChromeDrivers/chromedriver87')
+driver = webdriver.Chrome(options=options, executable_path=Options.CHROME_DRIVER_PATH)
 wait = WebDriverWait(driver, 10)
 session = requests.Session()
 
@@ -34,7 +34,7 @@ def find_item_id(name):
     Find Item on Supreme web-store and return its unique item ID
     """
 
-    url = 'https://www.supremenewyork.com/mobile/products.json'
+    url = 'https://www.supremenewyork.com/mobile_stock.json'
 
     html = session.get(url=url, headers=headers, timeout=10)
     output = json.loads(html.text)
@@ -93,11 +93,11 @@ def checkout():
         f'document.getElementById("order_email").value="{UserDetails.EMAIL}";'
         f'document.getElementById("order_tel").value="{UserDetails.TELE}";'
         f'document.getElementById("order_billing_address").value="{UserDetails.ADDRESS_1}";'
-        f'document.getElementById("order_billing_address_2").value="{UserDetails.ADDRESS_2}";'
+        f'document.getElementById("order_billing_address").value="{UserDetails.ADDRESS_2}";'
         f'document.getElementById("order_billing_address_3").value="{UserDetails.ADDRESS_3}";'
         f'document.getElementById("order_billing_city").value="{UserDetails.CITY}";'
         f'document.getElementById("order_billing_zip").value="{UserDetails.POSTCODE}";'
-        f'document.getElementById("credit_card_n").value="{PaymentDetails.CARD_NUMBER}";'
+        f'document.getElementById("credit_card_number").value="{PaymentDetails.CARD_NUMBER}";'
         f'document.getElementById("credit_card_cvv").value="{PaymentDetails.CVV}";'
     )
 
@@ -105,10 +105,10 @@ def checkout():
     card_type.select_by_visible_text(PaymentDetails.CARD_TYPE)
 
     card_month = Select(driver.find_element_by_id('credit_card_month'))
-    card_month.select_by_visible_text(PaymentDetails.EXP_MONTH)
+    card_month.select_by_value(str(PaymentDetails.EXP_MONTH))
 
     card_year = Select(driver.find_element_by_id('credit_card_year'))
-    card_year.select_by_visible_text(PaymentDetails.EXP_YEAR)
+    card_year.select_by_value(str(PaymentDetails.EXP_YEAR))
 
     driver.find_element_by_id('order_terms').click()
 
