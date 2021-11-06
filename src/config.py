@@ -1,7 +1,10 @@
+class Options:
+    CHROME_DRIVER_PATH = ''
+
 class ProductDetails:
-    KEYWORDS = "Script Logos"
-    COLOUR = "Tan"
-    SIZE = "Medium"
+    KEYWORDS = ""
+    COLOUR = ""
+    SIZE = ""
 
 class UserDetails:
     NAME = ""
@@ -16,6 +19,6 @@ class UserDetails:
 class PaymentDetails:
     CARD_NUMBER = ""
     CVV = ""
-    CARD_TYPE = ""              # Ensure card type is either "Visa", "American Express", "Mastercard" or "Solo"
+    CARD_TYPE = "Credit Card"              
     EXP_MONTH = ""              # Two digit month (i.e. January is "01")
     EXP_YEAR = ""               # Four digit year (2020)
