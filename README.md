@@ -1,6 +1,6 @@
 # Supreme Bot
 
-This is a basic Supreme bot that was created in the [Create a Supreme Bot]() video.
+This is a basic Supreme bot that was created in the [Create a Supreme Bot](https://youtu.be/nVpmYoloLuA) video.
 
 ## About the Project
 This project contains the source code of a basic open-source Supreme bot that was created in the YouTube video [here](). The bot is able to search for an item, choose a colour and size, and proceed to checkout. 
