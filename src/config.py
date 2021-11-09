@@ -1,4 +1,4 @@
-class Options:
+class ChromeOptions:
     CHROME_DRIVER_PATH = ''
 
 class ProductDetails:

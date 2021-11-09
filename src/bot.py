@@ -7,7 +7,7 @@ from selenium import webdriver
 import requests
 import json
 import time
-from config import ProductDetails, UserDetails, PaymentDetails, Options
+from config import ProductDetails, UserDetails, PaymentDetails, ChromeOptions
 
 headers = {'user-agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, '
                          'like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1'}
@@ -24,7 +24,7 @@ options.add_experimental_option("mobileEmulation", mobile_emulation)
 options.add_experimental_option('prefs', prefs)
 options.add_experimental_option("useAutomationExtension", False)
 
-driver = webdriver.Chrome(options=options, executable_path=Options.CHROME_DRIVER_PATH)
+driver = webdriver.Chrome(options=options, executable_path=ChromeOptions.CHROME_DRIVER_PATH)
 wait = WebDriverWait(driver, 10)
 session = requests.Session()
 
