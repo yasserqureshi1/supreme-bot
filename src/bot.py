@@ -93,16 +93,13 @@ def checkout():
         f'document.getElementById("order_email").value="{UserDetails.EMAIL}";'
         f'document.getElementById("order_tel").value="{UserDetails.TELE}";'
         f'document.getElementById("order_billing_address").value="{UserDetails.ADDRESS_1}";'
-        f'document.getElementById("order_billing_address").value="{UserDetails.ADDRESS_2}";'
+        f'document.getElementById("order_billing_address_2").value="{UserDetails.ADDRESS_2}";'
         f'document.getElementById("order_billing_address_3").value="{UserDetails.ADDRESS_3}";'
         f'document.getElementById("order_billing_city").value="{UserDetails.CITY}";'
         f'document.getElementById("order_billing_zip").value="{UserDetails.POSTCODE}";'
         f'document.getElementById("credit_card_number").value="{PaymentDetails.CARD_NUMBER}";'
         f'document.getElementById("credit_card_cvv").value="{PaymentDetails.CVV}";'
     )
-
-    card_type = Select(driver.find_element_by_id('credit_card_type'))
-    card_type.select_by_visible_text(PaymentDetails.CARD_TYPE)
 
     card_month = Select(driver.find_element_by_id('credit_card_month'))
     card_month.select_by_value(str(PaymentDetails.EXP_MONTH))
