@@ -1,5 +1,5 @@
 class ChromeOptions:
-    CHROME_DRIVER_PATH = ''
+    CHROME_DRIVER_PATH = ""
 
 class ProductDetails:
     KEYWORDS = ""
@@ -18,7 +18,6 @@ class UserDetails:
 
 class PaymentDetails:
     CARD_NUMBER = ""
-    CVV = ""
-    CARD_TYPE = "Credit Card"              
+    CVV = ""             
     EXP_MONTH = ""              # Two digit month (i.e. January is "01")
     EXP_YEAR = ""               # Four digit year (2020)
